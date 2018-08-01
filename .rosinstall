@@ -1,0 +1,22 @@
+# IT IS UNLIKELY YOU WANT TO EDIT THIS FILE BY HAND,
+# UNLESS FOR REMOVING ENTRIES.
+# IF YOU WANT TO CHANGE THE ROS ENVIRONMENT VARIABLES
+# USE THE rosinstall TOOL INSTEAD.
+# IF YOU CHANGE IT, USE rosinstall FOR THE CHANGES TO TAKE EFFECT
+- git: {local-name: src/expressiongraph, uri: 'https://github.com/semroco/expressiongraph',
+    version: 162a834210a656c5c3a257b233aecacf02cb437c}
+- git: {local-name: src/giskard_core, uri: 'https://github.com/semroco/giskard_core',
+    version: b60109e58db1080f1572426c1a419ef4663c4038}
+- git: {local-name: src/giskard_msgs, uri: 'https://github.com/SemRoCo/giskard_msgs',
+    version: 3cea851f1823e5fa58164700e06a8e34cd78a639}
+- git: {local-name: src/giskard_pr2, uri: 'https://github.com/SemRoCo/giskard_pr2',
+    version: c326dbd58f0daf334bd390130fe8b8f465dee96a}
+- git: {local-name: src/giskard_ros, uri: 'https://github.com/mpomarlan/giskard_ros',
+    version: 49fe0a67e51e5535b7a63b91741828e39b9d4c46}
+- git: {local-name: src/iai_naive_kinematics_sim, uri: 'https://github.com/code-iai/iai_naive_kinematics_sim',
+    version: 382d140da3a0f498832392757558fca0a3bbfe95}
+- git: {local-name: src/iai_pr2, uri: 'https://github.com/code-iai/iai_pr2', version: deff1ce8e57733bbe58d46a0d480401860016bd7}
+- git: {local-name: src/qpOASES, uri: 'https://github.com/SemRoCo/qpOASES.git', version: c20ccf625b4508167ef414c5828cfcf9e7b295aa}
+- git: {local-name: src/ros-sharp, uri: 'https://github.com/siemens/ros-sharp', version: f37d8c83a7eb9e7d7cc15384e12601dd7fa89c56}
+- git: {local-name: src/ease_ph_pr2_scenes, uri: 'https://github.com/mpomarlan/ease_ph_pr2_scenes',
+    version: master}
