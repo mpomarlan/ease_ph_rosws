@@ -7,6 +7,8 @@ Assuming you already have ROS Kinetic installed, git clone this repository at so
 ```
 source /opt/ros/kinetic/setup.bash
 rosws update
+rosdep update
+rosdep install --ignore-src --from-paths src/
 catkin_make
 source devel/setup.bash
 ```
