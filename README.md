@@ -18,5 +18,7 @@ Whenever you want to catkin_make, build, or just use something from this workspa
 source devel/setup.bash
 ```
 
-Alternatively you can add the source command to your bash.rc file, if you expect this to be the default ROS workspace you'll be using.
+Remeber to do this whenever you open a new terminal tab in which you want to use the workspace!
+
+Alternatively you can have bash do this for you automatically, by adding the source /path/to/your/workspace/devel/setup.bash command to your bash.rc file, if you expect this to be the default ROS workspace you will be using.
 
