@@ -3,7 +3,7 @@
 A ROS workspace for the P01/H02 subprojects of EASE.
 
 - [Local installation](#local-installation)
-- [Docker installation (macOS)](#docker-installation-macos)
+- [Docker setup (macOS)](#docker-setup-macos)
 - [Using this project](#using-this-project)
 
 
@@ -38,46 +38,26 @@ Remeber to do this whenever you open a new terminal tab in which you want to use
 Alternatively you can have bash do this for you automatically, by adding the source /path/to/your/workspace/devel/setup.bash command to your bash.rc file, if you expect this to be the default ROS workspace you will be using.
 
 
-## Docker installation (macOS)
+## Docker setup (macOS)
 
-If you decided to use Docker, the steps to get you on speed are different. First, install [Docker](https://www.docker.com/community-edition), [XQuartz](https://www.xquartz.org), and [Unity](https://unity3d.com) using [brew](https://brew.sh): `brew cask install docker XQuartz unity`.
+If you decided to use Docker, the steps to get you on speed are different. First, install [Docker](https://www.docker.com/community-edition), [Unity](https://unity3d.com) and optionally (if you want to use any ROS UI tools) [XQuartz](https://www.xquartz.org) using [brew](https://brew.sh): `brew cask install docker unity XQuartz`.
 
-You need to once build the docker image and install the dependencies. This should be, in most cases, a one-off task:
-
-```
-make init
-```
-
-To build and run the project, you can use a simple make:
+There are two scenarios available: nodding and simulated_markers. To run either, use one of the following commands:
 
 ```
-make
+docker-compose up nodding
+docker-compose up simulated_markers
 ```
 
-This will run the nodding example scene. For other scenes, do the following:
+You will get some warnings about a missing HOST_IP environment variable – this is fine, unless you plan on using the ROS UI tools.
+In that case, run XQuartz and change its settings to allow network connections.
+Then add your IP to the list of allowed connections and set HOST_IP accordingly:
 
 ```
-make init  # once, as before
-docker-compose up --detach  # Run the roscore service
-docker-compose exec roscore /ros_entrypoint.sh catkin_make  # Compile changes (skip if none)
-docker-compose exec roscore /ros_entrypoint.sh  roslaunch ease_ph_pr2_scenes scenario_nodding.launch
-    # Replace "scenario_nodding" with the scene you want
-docker-compose down  # Once you are done, to shut down the container
-
-Whenever a code change happens and you need to run `catkin_make`, make sure to run it inside the container (note the `ros_entrypoint.sh`! This ensures proper environment variables.):
-
+export HOST_IP=$(ipconfig getifaddr en0)
+xhost + ${HOST_IP}
+docker-compose up nodding
 ```
-docker-compose exec roscore /ros_entrypoint.sh catkin_make
-```
-
-The easiest way is to once run a bash and just call `catkin_make` inside it:
-
-```
-% docker-compose exec roscore /bin/bash
-root@5a42853ba845:/catkin_ws# catkin_make
-```
-
-In that case, however, you will have to run `source devel/setup.bash` after each `catkin_make` which introduces new packages.
 
 
 ## Using this project

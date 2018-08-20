@@ -3,16 +3,26 @@ version: "3.2"
 
 services:
 
-    roscore:
+    nodding:
+        command: roslaunch ease_ph_pr2_scenes scenario_nodding.launch
         build: .
         volumes:
-            - type: bind
-              source: .
-              target: /catkin_ws
             - type: bind
               source: /tmp/.X11-unix
               target: /tmp/.X11-unix
         environment:
-            - DISPLAY=${HOST_IP}
+            - DISPLAY=${HOST_IP}:0
+        ports:
+            - "9090:9090"
+
+    interactive_markers:
+        command: roslaunch ease_ph_pr2_scenes scenario_interactive_markers.launch
+        build: .
+        volumes:
+            - type: bind
+              source: /tmp/.X11-unix
+              target: /tmp/.X11-unix
+        environment:
+            - DISPLAY=${HOST_IP}:0
         ports:
             - "9090:9090"

@@ -11,6 +11,14 @@ RUN apt-get update \
 EXPOSE 9090
 
 COPY ros_entrypoint.sh /ros_entrypoint.sh
+COPY .rosinstall /catkin_ws/.rosinstall
 
 WORKDIR /catkin_ws
+
+RUN /bin/bash -c " \
+       rosws update \
+    && rosdep update \
+    && rosdep install -y --ignore-src --from-paths src/ \
+    && /ros_entrypoint.sh catkin_make -j1"
+
 CMD ["roscore"]
