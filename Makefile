@@ -2,6 +2,7 @@ DC = HOST_IP="$(shell ipconfig getifaddr en0):0" docker-compose
 EXEC = ${DC} exec roscore /ros_entrypoint.sh
 
 launch:
+	xhost + $(shell ipconfig getifaddr en0)
 	${DC} up --detach
 	${EXEC} catkin_make
 	${EXEC} roslaunch ease_ph_pr2_scenes scenario_nodding.launch
