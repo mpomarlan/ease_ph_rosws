@@ -9,7 +9,7 @@ A ROS workspace for the P01/H02 subprojects of EASE.
 
 ## Local installation
 
-[Install ROS Kinetic](http://wiki.ros.org/kinetic/Installation). Note that on macOS (and Windows) this is very experimental and difficult (up to almost impossible), hence we recommend using [Docker](#docker-installation) there.
+[Install ROS Kinetic](http://wiki.ros.org/kinetic/Installation). Note that on macOS (and Windows) this is very experimental and difficult (up to almost impossible), hence we recommend using [Docker](#docker-installation-macos) there.
 
 Once you have ROS Kinetic installed, git clone this repository at some convenient location. Then cd into the repository folder and run
 
@@ -40,7 +40,7 @@ Alternatively you can have bash do this for you automatically, by adding the sou
 
 ## Docker installation (macOS)
 
-If you decided to use Docker, the steps to get you on speed are different. First, install [Docker](https://www.docker.com/community-edition), [XQuartz](https://www.xquartz.org), and [Unity](https://unity3d.com): `[brew](https://brew.sh) cask install docker XQuartz unity`.
+If you decided to use Docker, the steps to get you on speed are different. First, install [Docker](https://www.docker.com/community-edition), [XQuartz](https://www.xquartz.org), and [Unity](https://unity3d.com) using [brew](https://brew.sh): `brew cask install docker XQuartz unity`.
 
 You need to once build the docker image. This should be, in most cases, a one-off task:
 
@@ -95,7 +95,7 @@ In that case, however, you will have to run `source devel/setup.bash` after each
 
 After your first `catkin_make`, if all worked well, you will end up with several different directories inside this repository.
 
-One of them is `src/[ease_ph_pr2_scenes](https://github.com/mpomarlan/ease_ph_pr2_scenes)`.
+One of them is src/[ease_ph_pr2_scenes](https://github.com/mpomarlan/ease_ph_pr2_scenes).
 
 Run one of the scenarios (a [PR2 robot](https://www.willowgarage.com/pages/pr2/overview) nodding its head). Remember to source (local installation) or use the container (docker installation)!
 
@@ -105,4 +105,4 @@ roslaunch ease_ph_pr2_scenes scenario_nodding.launch
 
 Now start up Unity and load the `src/ease_ph_pr2_scenes` directory as a project. Use `File > Open Scene` and select the `nodding` scene.
 
-If all works, you unity should now be able to play the scene and you should see a robot nodding its head, controlled by ROS!
+If all works, your unity should now be able to play the scene and you should see a robot nodding its head, controlled by ROS!
