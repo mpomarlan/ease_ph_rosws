@@ -1,0 +1,18 @@
+version: "3.2"
+
+
+services:
+
+    roscore:
+        build: .
+        volumes:
+            - type: bind
+              source: .
+              target: /catkin_ws
+            - type: bind
+              source: /tmp/.X11-unix
+              target: /tmp/.X11-unix
+        environment:
+            - DISPLAY=${HOST_IP}
+        ports:
+            - "9090:9090"

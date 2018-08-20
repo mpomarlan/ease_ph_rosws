@@ -42,49 +42,38 @@ Alternatively you can have bash do this for you automatically, by adding the sou
 
 If you decided to use Docker, the steps to get you on speed are different. First, install [Docker](https://www.docker.com/community-edition), [XQuartz](https://www.xquartz.org), and [Unity](https://unity3d.com) using [brew](https://brew.sh): `brew cask install docker XQuartz unity`.
 
-You need to once build the docker image. This should be, in most cases, a one-off task:
+You need to once build the docker image and install the dependencies. This should be, in most cases, a one-off task:
 
 ```
-docker build -t roscore .
+make init
 ```
 
-Now, and whenever your en0 interface address changes, you need to run `xhost + $(ipconfig getifaddr en0)`. This allows your docker container to connect to the XQuartz display. In case XQuartz is not running, you can start it using `open -g -a XQuartz`.
-
-As a next step, you need to run the container. This is a more difficult step, as it requires many parameters:
+To build and run the project, you can use a simple make:
 
 ```
-docker run -d \
-    --mount type=bind,source="$(pwd)",target=/catkin_ws \
-    -e DISPLAY=$(ipconfig getifaddr en0):0 \
-    -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -p 9090:9090 \
-    --name roscore roscore
+make
 ```
 
-This command will
-- Start a container named `roscore` which runs the image `roscore`.
-- Mount the current directory into the docker container, so that it can read its contents. This is important so that you can change files from the outside and don't have to recreate the image after each change.
-- Map the /tmp/.X11-unix sockets between the OS and the container, so that the GUIs can be used from macOS (the environment variable DISPLAY is also part of this process).
-- Expose port 9090 used by the rosbridge to allow communication over this port.
-
-The last setup step is to use the container to run rosws and rosdep:
+This will run the nodding example scene. For other scenes, do the following:
 
 ```
-docker exec roscore rosws update
-docker exec roscore rosdep update
-docker exec roscore rosdep install -y --ignore-src --from-paths src/
-```
+make init  # once, as before
+docker-compose up --detach  # Run the roscore service
+docker-compose exec roscore /ros_entrypoint.sh catkin_make  # Compile changes (skip if none)
+docker-compose exec roscore /ros_entrypoint.sh  roslaunch ease_ph_pr2_scenes scenario_nodding.launch
+    # Replace "scenario_nodding" with the scene you want
+docker-compose down  # Once you are done, to shut down the container
 
 Whenever a code change happens and you need to run `catkin_make`, make sure to run it inside the container (note the `ros_entrypoint.sh`! This ensures proper environment variables.):
 
 ```
-docker exec roscore /ros_entrypoint.sh catkin_make
+docker-compose exec roscore /ros_entrypoint.sh catkin_make
 ```
 
 The easiest way is to once run a bash and just call `catkin_make` inside it:
 
 ```
-% docker exec -it roscore /bin/bash
+% docker-compose exec roscore /bin/bash
 root@5a42853ba845:/catkin_ws# catkin_make
 ```
 
