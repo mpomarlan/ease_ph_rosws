@@ -1,6 +1,6 @@
 # ease_ph_rosws
 
-A ROS workspace for the P01/H02 subprojects of EASE.
+A set of ROS workspaces for the P01/H02 subprojects of EASE.
 
 - [Local installation](#local-installation)
 - [Docker installation (macOS)](#docker-installation-macos)
@@ -11,10 +11,25 @@ A ROS workspace for the P01/H02 subprojects of EASE.
 
 [Install ROS Kinetic](http://wiki.ros.org/kinetic/Installation). Note that on macOS (and Windows) this is very experimental and difficult (up to almost impossible), hence we recommend using [Docker](#docker-installation) there.
 
-Once you have ROS Kinetic installed, git clone this repository at some convenient location. Then cd into the repository folder and run
+Once you have ROS Kinetic installed, git clone this repository at some convenient location. Run the command
 
 ```
 source /opt/ros/kinetic/setup.bash
+```
+
+to make sure the ROS environment variables are set properly. Then cd into the folder `0_unity`. This is a ROS workspace, and to fill it up, run
+
+```
+rosws update
+rosdep update
+rosdep install --ignore-src --from-paths src/
+catkin_make
+source devel/setup.bash
+```
+
+It is important to source the setup.bash from this workspace after you finish a `catkin_make` with no errors. This updates the ROS environment variables, and allows us to use packages in this workspace to compile other packages that depend on them. To continue installation, cd into `1_cram` and again do
+
+```
 rosws update
 rosdep update
 rosdep install --ignore-src --from-paths src/
@@ -27,7 +42,7 @@ If you don't have it yet, now is a good time to also install [Unity](https://uni
 
 ### Activating the workspace
 
-Whenever you want to catkin_make, build, or just use something from this workspace, cd into it and run
+Whenever you want to catkin_make, build, or just use something from one of the workspaces, cd into it and run
 
 ```
 source devel/setup.bash
