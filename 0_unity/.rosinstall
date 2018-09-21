@@ -12,7 +12,7 @@
 - git: {local-name: src/giskard_pr2, uri: 'https://github.com/SemRoCo/giskard_pr2',
     version: c326dbd58f0daf334bd390130fe8b8f465dee96a}
 - git: {local-name: src/giskard_ros, uri: 'https://github.com/mpomarlan/giskard_ros',
-    version: 49fe0a67e51e5535b7a63b91741828e39b9d4c46}
+    version: 7062a9e4d653244203b3622e63d13b81fbb2ab86}
 - git: {local-name: src/iai_naive_kinematics_sim, uri: 'https://github.com/code-iai/iai_naive_kinematics_sim',
     version: 382d140da3a0f498832392757558fca0a3bbfe95}
 - git: {local-name: src/iai_pr2, uri: 'https://github.com/code-iai/iai_pr2', version: deff1ce8e57733bbe58d46a0d480401860016bd7}
