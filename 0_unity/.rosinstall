@@ -7,11 +7,11 @@
 - git:
     local-name: src/iai_common_msgs
     uri: https://github.com/code-iai/iai_common_msgs.git
-    version: master
+    version: 673045b2364e54b569438794b0240486e4afae2b
 - git:
     local-name: src/knowrob
     uri: https://github.com/knowrob/knowrob.git
-    version: master
+    version: e2c041b8cfd4374f074f90ee3c52660366c3fc83
 - git:
     local-name: src/expressiongraph
     uri: https://github.com/semroco/expressiongraph
