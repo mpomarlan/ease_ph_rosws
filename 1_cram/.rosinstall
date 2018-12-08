@@ -3,7 +3,7 @@
 # IF YOU WANT TO CHANGE THE ROS ENVIRONMENT VARIABLES
 # USE THE rosinstall TOOL INSTEAD.
 # IF YOU CHANGE IT, USE rosinstall FOR THE CHANGES TO TAKE EFFECT
-- git: {local-name: src/cram, uri: 'https://github.com/cram2/cram.git', version: 8c9704d9ce43c4fba0195006c5ebdf226062e2f6}
+- git: {local-name: src/cram, uri: 'https://github.com/mpomarlan/cram.git', version: bolzano}
 - git: {local-name: src/iai_cad_tools, uri: 'https://github.com/code-iai/iai_cad_tools.git', version: 90f2627936b0a779dfbeada6be85d91c5a7711dc}
 - git: {local-name: src/iai_maps, uri: 'https://github.com/code-iai/iai_maps.git', version: e64b1dcd0ffb41ea7a07c0817e4fb298976489a8}
 - git: {local-name: src/iai_common_msgs, uri: 'https://github.com/code-iai/iai_common_msgs.git', version: 673045b2364e54b569438794b0240486e4afae2b}
@@ -14,3 +14,5 @@
 - git: {local-name: src/moveit_visual_tools, uri: 'https://github.com/ros-planning/moveit_visual_tools.git', version: d5cdd6aaf7f58eff9204b70aa069edfc622da389}
 - git: {local-name: src/pr2_controllers, uri: 'https://github.com/mpomarlan/pr2_controllers', version: 5e7e06609f511188417bed6b94a52d850dfd0a13}
 - git: {local-name: src/robosherlock_msgs, uri: 'https://github.com/RoboSherlock/robosherlock_msgs', version: a58793b23d5c0be5fc23cef9d26412980c92bd6b}
+- git: {local-name: src/skram, uri: 'https://github.com/mpomarlan/skram.git', version: master}
+
